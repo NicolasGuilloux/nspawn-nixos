@@ -14,7 +14,13 @@ jobs:
           - 'aarch64-linux'
     steps:
       - uses: actions/checkout@v3
-      - uses: DeterminateSystems/nix-installer-action@main
+      - run: sudo apt-get install -y qemu-user-static
+
+      - uses: cachix/install-nix-action@v21
+        with:
+          extra_nix_config: |
+            system = ${{ matrix.arch }}
+      
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Building tarball for ${{ matrix.arch }}
