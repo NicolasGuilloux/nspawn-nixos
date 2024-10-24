@@ -52,12 +52,16 @@ in
         target = "/etc/nixos/flake.nix";
       }
       {
-        source = ./configuration.nix;
+        source = ./src/configuration.nix;
         target = "/etc/nixos/configuration.nix";
       }
       {
-        source = ./nspawn-image.nix;
+        source = ./src/nspawn-image.nix;
         target = "/etc/nixos/nspawn-image.nix";
+      }
+      {
+        source = ./src/udm-network.nix;
+        target = "/etc/nixos/udm-network.nix";
       }
     ];
 

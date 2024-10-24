@@ -1,5 +1,5 @@
 {
-  description = "systemd-nspawn images with NixOS";
+  description = "systemd-nspawn images with NixOS ready for Unifi";
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -16,6 +16,7 @@
       "aarch64-linux"
       "x86_64-linux"
     ];
+
     imports = [
       inputs.treefmt-nix.flakeModule
     ];
@@ -26,7 +27,7 @@
           nixos = inputs.nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
-              ./configuration.nix
+              ./src/configuration.nix
               ./nspawn-tarball.nix
             ];
           };
